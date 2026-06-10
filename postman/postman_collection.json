@@ -1147,7 +1147,7 @@
             "name": "Consent Management (Requires JWT)",
             "item": [
                 {
-                    "name": "1. Create Consent Request",
+                    "name": "1. Request OTP",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -1164,23 +1164,23 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"farmer\": \"FAYDA-123\",\n    \"partner\": \"Test Partner\",\n    \"consent_type\": \"specific\",\n    \"purpose\": \"Testing Consent API\",\n    \"validity_from\": \"2026-06-01 00:00:00\",\n    \"validity_to\": \"2027-06-01 00:00:00\",\n    \"requested_data_fields\": []\n}"
+                            "raw": "{\n    \"fayda_id\": \"FAYDA-123\",\n    \"partner\": \"Test Partner\",\n    \"lead_id\": \"{{lead_id}}\",\n    \"purpose\": \"Testing Consent API\",\n    \"validity_from\": \"2026-06-01 00:00:00\",\n    \"validity_to\": \"2027-06-01 00:00:00\",\n    \"consent_form_filename\": \"consent.pdf\",\n    \"consent_form_base64\": \"data:application/pdf;base64,dGVzdA==\"\n}"
                         },
                         "url": {
-                            "raw": "{{base_url}}/api/method/oan_a2c.consent.consent.create_consent_request",
+                            "raw": "{{base_url}}/api/method/oan_a2c.api.v1.consent.consent.request_otp",
                             "host": [
                                 "{{base_url}}"
                             ],
                             "path": [
                                 "api",
                                 "method",
-                                "oan_a2c.consent.consent.create_consent_request"
+                                "oan_a2c.api.v1.consent.consent.request_otp"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "2. Send OTP",
+                    "name": "2. Verify OTP for Lead",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -1197,50 +1197,17 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"consent_request\": \"<CONSENT_REQUEST_ID_FROM_PREVIOUS_STEP>\"\n}"
+                            "raw": "{\n    \"lead_id\": \"{{lead_id}}\",\n    \"otp_code\": \"123456\"\n}"
                         },
                         "url": {
-                            "raw": "{{base_url}}/api/method/oan_a2c.consent.consent.send_otp",
+                            "raw": "{{base_url}}/api/method/oan_a2c.api.v1.consent.consent.verify_otp_for_lead",
                             "host": [
                                 "{{base_url}}"
                             ],
                             "path": [
                                 "api",
                                 "method",
-                                "oan_a2c.consent.consent.send_otp"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "3. Verify OTP",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "Bearer {{jwt_token}}",
-                                "type": "text"
-                            },
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json",
-                                "type": "text"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"consent_request\": \"<CONSENT_REQUEST_ID>\",\n    \"otp_code\": \"123456\"\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/method/oan_a2c.consent.consent.verify_otp",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "method",
-                                "oan_a2c.consent.consent.verify_otp"
+                                "oan_a2c.api.v1.consent.consent.verify_otp_for_lead"
                             ]
                         }
                     }

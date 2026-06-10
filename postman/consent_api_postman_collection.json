@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "1. Send OTP & Create Consent",
+			"name": "1. Send OTP & Create Consent Request",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -23,23 +23,23 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"fayda_id\": \"FAYDA-123\",\n    \"partner\": \"Test Partner\",\n    \"purpose\": \"Testing Consent API\",\n    \"validity_from\": \"2026-06-01 00:00:00\",\n    \"validity_to\": \"2027-06-01 00:00:00\",\n    \"loan_application\": \"{{application_id}}\"\n}"
+					"raw": "{\n    \"fayda_id\": \"FAYDA-123\",\n    \"partner\": \"Test Partner\",\n    \"lead_id\": \"{{lead_id}}\",\n    \"purpose\": \"Testing Consent API\",\n    \"validity_from\": \"2026-06-01 00:00:00\",\n    \"validity_to\": \"2027-06-01 00:00:00\",\n    \"consent_form_filename\": \"consent.pdf\",\n    \"consent_form_base64\": \"data:application/pdf;base64,dGVzdA==\"\n}"
 				},
 				"url": {
-					"raw": "{{base_url}}/api/method/oan_a2c.consent.consent.send_otp_and_create_consent",
+					"raw": "{{base_url}}/api/method/oan_a2c.api.v1.consent.consent.request_otp",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
 						"method",
-						"oan_a2c.consent.consent.send_otp_and_create_consent"
+						"oan_a2c.api.v1.consent.consent.request_otp"
 					]
 				}
 			}
 		},
 		{
-			"name": "2. Verify OTP",
+			"name": "2. Verify OTP for Lead",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -56,17 +56,17 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"consent_request\": \"{{consent_request_id}}\",\n    \"otp_code\": \"123456\"\n}"
+					"raw": "{\n    \"lead_id\": \"{{lead_id}}\",\n    \"otp_code\": \"123456\"\n}"
 				},
 				"url": {
-					"raw": "{{base_url}}/api/method/oan_a2c.consent.consent.verify_otp",
+					"raw": "{{base_url}}/api/method/oan_a2c.api.v1.consent.consent.verify_otp_for_lead",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
 						"method",
-						"oan_a2c.consent.consent.verify_otp"
+						"oan_a2c.api.v1.consent.consent.verify_otp_for_lead"
 					]
 				}
 			}
@@ -82,12 +82,8 @@
 			"value": "PASTE_YOUR_TOKEN_HERE"
 		},
 		{
-			"key": "consent_request_id",
-			"value": "CR-YYYY-XXXXX"
-		},
-		{
-			"key": "application_id",
-			"value": "APP-YYYY-XXXXX"
+			"key": "lead_id",
+			"value": "LEAD-2026-00001"
 		}
 	]
 }

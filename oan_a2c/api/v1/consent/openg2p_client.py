@@ -134,7 +134,8 @@ class OpenG2PConsentClient:
             "params": params
         }
         try:
-            print(f">>>>>> [DEBUG RPC] Sending to {endpoint} with cookies: {self.session.cookies.get_dict()}")
+            print(f">>>>>> [DEBUG RPC] Sending to {url} with cookies: {self.portal_session_id} ")
+            print(f">>>>>> [DEBUG RPC] payload: {payload}")
             kwargs = {"json": payload}
             if hasattr(self, "portal_session_id") and self.portal_session_id:
                 kwargs["cookies"] = {"session_id": self.portal_session_id}
@@ -155,6 +156,7 @@ class OpenG2PConsentClient:
                 frappe.throw(_("OpenG2P Error: {0}").format(error_msg))
 
             result = data.get("result")
+            print(f"result: {result}")
             if isinstance(result, dict) and result.get("success") is False:
                 frappe.throw(_("OpenG2P Error: {0}").format(result.get("message") or "Unknown error"))
 
@@ -162,6 +164,8 @@ class OpenG2PConsentClient:
 
         except requests.exceptions.RequestException as e:
             frappe.throw(_("Failed to connect to OpenG2P: {0}").format(str(e)))
+        except frappe.ValidationError:
+            raise
         except Exception as e:
             frappe.throw(_("OpenG2P Error: {0}").format(str(e)))
 
@@ -406,7 +410,7 @@ class OpenG2PConsentClient:
         """
         params = {
             "farmer_id": int(farmer_id),
-            "transaction_id": transaction_id,
+            "transaction_id": str(transaction_id),
             "otp_code": str(otp_code)
         }
         print(f">>>>>> Calling Odoo /consent/fayda/verify_otp: {params}")
