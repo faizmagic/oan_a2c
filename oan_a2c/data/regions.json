@@ -1,0 +1,58 @@
+[
+  {
+    "region_name": "Addis Ababa",
+    "region_code": "ET14"
+  },
+  {
+    "region_name": "Afar",
+    "region_code": "ET02"
+  },
+  {
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "region_name": "Benishangul-Gumuz",
+    "region_code": "ET06"
+  },
+  {
+    "region_name": "Dire Dawa",
+    "region_code": "ET15"
+  },
+  {
+    "region_name": "Gambela",
+    "region_code": "ET12"
+  },
+  {
+    "region_name": "Harari",
+    "region_code": "ET13"
+  },
+  {
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "region_name": "Sidama",
+    "region_code": "ET16"
+  },
+  {
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "region_name": "South West Ethiopia People",
+    "region_code": "ET11"
+  },
+  {
+    "region_name": "Tigray",
+    "region_code": "ET01"
+  },
+  {
+    "region_name": "South Ethiopia People",
+    "region_code": "ET08"
+  },
+  {
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  }
+]
