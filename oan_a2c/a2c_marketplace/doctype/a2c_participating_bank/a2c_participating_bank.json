@@ -97,13 +97,15 @@
   },
   {
    "fieldname": "registered_kebele_village",
-   "fieldtype": "Data",
-   "label": "Registered Kebele/Village"
+   "fieldtype": "Link",
+   "label": "Registered Kebele/Village",
+   "options": "A2C Kebele"
   },
   {
    "fieldname": "registered_woreda_district",
-   "fieldtype": "Data",
-   "label": "Registered Woreda/District"
+   "fieldtype": "Link",
+   "label": "Registered Woreda/District",
+   "options": "A2C Woreda"
   },
   {
    "fieldname": "registered_city",
@@ -149,7 +151,7 @@
   }
  ],
  "links": [],
- "modified": "2026-07-31 12:06:42.048439",
+ "modified": "2026-08-06 18:41:30.032635",
  "modified_by": "Administrator",
  "module": "A2C Marketplace",
  "name": "A2C Participating Bank",

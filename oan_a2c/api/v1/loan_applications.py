@@ -743,11 +743,13 @@ def download_supporting_document(**kwargs):
 		frappe.has_permission("File", "read", throw=True)
 		frappe.throw(_("File not found"), frappe.DoesNotExistError)
 
-	frappe.local.response.filename = file_doc.file_name
-	frappe.local.response.filecontent = file_doc.get_content()
-	frappe.local.response.type = "download"
+	# Use dictionary indexing because `frappe.local.response` behaves as a dict in some test contexts
+	# where the full Frappe Response object might not be initialized or is substituted.
+	frappe.local.response["filename"] = file_doc.file_name
+	frappe.local.response["filecontent"] = file_doc.get_content()
+	frappe.local.response["type"] = "download"
 	if view:
-		frappe.local.response.display_content_as = "inline"
+		frappe.local.response["display_content_as"] = "inline"
 
 
 @frappe.whitelist(allow_guest=False, methods=["POST"])

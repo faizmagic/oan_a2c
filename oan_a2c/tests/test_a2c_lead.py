@@ -58,16 +58,27 @@ def _make_lead_verifiable(lead_id):
 		}
 	).insert(ignore_permissions=True)
 
-	visit = frappe.get_doc(
+	if not frappe.db.exists("A2C Region", "Oromia"):
+		frappe.get_doc({"doctype": "A2C Region", "region_name": "Oromia"}).insert(ignore_permissions=True)
+	if not frappe.db.exists("A2C Zone", {"zone_name": "East Shewa"}):
+		frappe.get_doc({"doctype": "A2C Zone", "zone_name": "East Shewa", "region": "Oromia"}).insert(ignore_permissions=True)
+	zone_id = frappe.db.get_value("A2C Zone", {"zone_name": "East Shewa"}, "name")
+	if not frappe.db.exists("A2C Woreda", {"woreda_name": "Ada'ama"}):
+		frappe.get_doc({"doctype": "A2C Woreda", "woreda_name": "Ada'ama", "zone": zone_id}).insert(ignore_permissions=True)
+	woreda_id = frappe.db.get_value("A2C Woreda", {"woreda_name": "Ada'ama"}, "name")
+	if not frappe.db.exists("A2C Kebele", {"kebele_name": "01", "woreda": woreda_id}):
+		frappe.get_doc({"doctype": "A2C Kebele", "kebele_name": "01", "woreda": woreda_id}).insert(ignore_permissions=True)
+
+	schedule = frappe.get_doc(
 		{
 			"doctype": "A2C Visit Schedule",
 			"lead": lead_id,
-			"visit_date": "2026-01-01",
-			"visit_time": "09:00:00",
+			"visit_date": frappe.utils.add_days(frappe.utils.today(), -1),
+			"visit_time": "10:00:00",
 			"region": "Oromia",
-			"zone": "West Hararghe",
-			"woreda": "Chiro",
-			"kebele": "01",
+			"zone": "Oromia-East Shewa",
+			"woreda": "Oromia-East Shewa-Ada'ama",
+			"kebele": "Oromia-East Shewa-Ada'ama-01",
 			"status": "Scheduled",
 		}
 	).insert(ignore_permissions=True)
@@ -76,7 +87,7 @@ def _make_lead_verifiable(lead_id):
 
 	# Return in deletion order: children before parents to avoid FK issues.
 	return [
-		("A2C Visit Schedule", visit.name),
+		("A2C Visit Schedule", schedule.name),
 		("A2C Consent Request", consent.name),
 		("A2C Credit Information", credit_info.name),
 		("A2C Loan Product", product.name),
@@ -578,6 +589,21 @@ class TestVisitScheduleAPI(unittest.TestCase):
 		frappe.set_user("Administrator")
 		cls._clear_records()
 
+		if not frappe.db.exists("A2C Region", "Oromia"):
+			frappe.get_doc({"doctype": "A2C Region", "region_name": "Oromia"}).insert(ignore_permissions=True)
+		if not frappe.db.exists("A2C Zone", {"zone_name": "East Shewa"}):
+			frappe.get_doc({"doctype": "A2C Zone", "zone_name": "East Shewa", "region": "Oromia"}).insert(ignore_permissions=True)
+		zone_id = frappe.db.get_value("A2C Zone", {"zone_name": "East Shewa"}, "name")
+		if not frappe.db.exists("A2C Woreda", {"woreda_name": "Ada'ama"}):
+			frappe.get_doc({"doctype": "A2C Woreda", "woreda_name": "Ada'ama", "zone": zone_id}).insert(ignore_permissions=True)
+		woreda_id = frappe.db.get_value("A2C Woreda", {"woreda_name": "Ada'ama"}, "name")
+		if not frappe.db.exists("A2C Kebele", {"kebele_name": "Kebele 02", "woreda": woreda_id}):
+			frappe.get_doc({"doctype": "A2C Kebele", "kebele_name": "Kebele 02", "woreda": woreda_id}).insert(ignore_permissions=True)
+		if not frappe.db.exists("A2C Kebele", {"kebele_name": "01", "woreda": woreda_id}):
+			frappe.get_doc({"doctype": "A2C Kebele", "kebele_name": "01", "woreda": woreda_id}).insert(ignore_permissions=True)
+		if not frappe.db.exists("A2C Kebele", {"kebele_name": "02", "woreda": woreda_id}):
+			frappe.get_doc({"doctype": "A2C Kebele", "kebele_name": "02", "woreda": woreda_id}).insert(ignore_permissions=True)
+
 		# Insert a test lead to schedule visits for
 		cls.lead = frappe.new_doc("A2C Lead")
 		cls.lead.phone_number = "+251955000001"
@@ -628,9 +654,9 @@ class TestVisitScheduleAPI(unittest.TestCase):
 			visit_date="2026-06-10",
 			visit_time="14:30:00",
 			region="Oromia",
-			zone="East Shewa",
-			woreda="Ada'ama",
-			kebele="Kebele 02",
+			zone="Oromia-East Shewa",
+			woreda="Oromia-East Shewa-Ada'ama",
+			kebele="Oromia-East Shewa-Ada'ama-Kebele 02",
 			meeting_location="Cooperative Office",
 			notes="Bring farm certificates",
 		)
@@ -645,9 +671,9 @@ class TestVisitScheduleAPI(unittest.TestCase):
 		self.assertEqual(schedule.lead, self.lead_id)
 		self.assertEqual(str(schedule.visit_date), "2026-06-10")
 		self.assertEqual(schedule.region, "Oromia")
-		self.assertEqual(schedule.zone, "East Shewa")
-		self.assertEqual(schedule.woreda, "Ada'ama")
-		self.assertEqual(schedule.kebele, "Kebele 02")
+		self.assertEqual(schedule.zone, "Oromia-East Shewa")
+		self.assertEqual(schedule.woreda, "Oromia-East Shewa-Ada'ama")
+		self.assertEqual(schedule.kebele, "Oromia-East Shewa-Ada'ama-Kebele 02")
 		self.assertEqual(schedule.status, "Scheduled")
 
 		# Verify Lead status remains Active after scheduling (since the visit is only Scheduled, not Completed yet)
@@ -690,18 +716,18 @@ class TestVisitScheduleAPI(unittest.TestCase):
 			visit_date="2026-06-10",
 			visit_time="10:00:00",
 			region="Oromia",
-			zone="East Shewa",
-			woreda="Ada'ama",
-			kebele="01",
+			zone="Oromia-East Shewa",
+			woreda="Oromia-East Shewa-Ada'ama",
+			kebele="Oromia-East Shewa-Ada'ama-01",
 		)
 		schedule_visit(
 			lead_id=self.lead_id,
 			visit_date="2026-06-11",
 			visit_time="15:00:00",
 			region="Oromia",
-			zone="East Shewa",
-			woreda="Ada'ama",
-			kebele="02",
+			zone="Oromia-East Shewa",
+			woreda="Oromia-East Shewa-Ada'ama",
+			kebele="Oromia-East Shewa-Ada'ama-02",
 		)
 
 		# Fetch all schedules
@@ -725,9 +751,9 @@ class TestVisitScheduleAPI(unittest.TestCase):
 			visit_date="2026-06-10",
 			visit_time="10:00:00",
 			region="Oromia",
-			zone="East Shewa",
-			woreda="Ada'ama",
-			kebele="01",
+			zone="Oromia-East Shewa",
+			woreda="Oromia-East Shewa-Ada'ama",
+			kebele="Oromia-East Shewa-Ada'ama-01",
 		)
 		schedule_id = res["data"]["schedule_id"]
 
@@ -754,9 +780,9 @@ class TestVisitScheduleAPI(unittest.TestCase):
 			visit_date="2026-06-10",
 			visit_time="10:00:00",
 			region="Oromia",
-			zone="East Shewa",
-			woreda="Ada'ama",
-			kebele="01",
+			zone="Oromia-East Shewa",
+			woreda="Oromia-East Shewa-Ada'ama",
+			kebele="Oromia-East Shewa-Ada'ama-01",
 		)
 		schedule_id_2 = res2["data"]["schedule_id"]
 
@@ -1144,9 +1170,9 @@ class TestLeadSanitizationXSS(unittest.TestCase):
 			visit_date="2026-06-20",
 			visit_time="11:00:00",
 			region="Oromia",
-			zone="East Shewa",
-			woreda="Ada'ama",
-			kebele="01",
+			zone="Oromia-East Shewa",
+			woreda="Oromia-East Shewa-Ada'ama",
+			kebele="Oromia-East Shewa-Ada'ama-01",
 			notes=payload,
 		)
 		self.assertEqual(res["status"], "success")

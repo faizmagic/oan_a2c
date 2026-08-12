@@ -1,0 +1,608 @@
+[
+  {
+    "zone_name": "Afder",
+    "zone_code": "ET0508",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "Agnewak",
+    "zone_code": "ET1202",
+    "region_name": "Gambela",
+    "region_code": "ET12"
+  },
+  {
+    "zone_name": "Alle",
+    "zone_code": "ET0806",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "Amaro",
+    "zone_code": "ET0808",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "Arsi",
+    "zone_code": "ET0408",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Assosa",
+    "zone_code": "ET0603",
+    "region_name": "Benishangul-Gumuz",
+    "region_code": "ET06"
+  },
+  {
+    "zone_name": "Awi",
+    "zone_code": "ET0309",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "Awsi /Zone 1",
+    "zone_code": "ET0201",
+    "region_name": "Afar",
+    "region_code": "ET02"
+  },
+  {
+    "zone_name": "Bale",
+    "zone_code": "ET0411",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Basketo",
+    "zone_code": "ET0804",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "Bench Sheko",
+    "zone_code": "ET1103",
+    "region_name": "South West Ethiopia",
+    "region_code": "ET11"
+  },
+  {
+    "zone_name": "Borena",
+    "zone_code": "ET0412",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Buno Bedele",
+    "zone_code": "ET0416",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Burji",
+    "zone_code": "ET0810",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "Central",
+    "zone_code": "ET0102",
+    "region_name": "Tigray",
+    "region_code": "ET01"
+  },
+  {
+    "zone_name": "Central Gondar",
+    "zone_code": "ET0311",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "Daawa",
+    "zone_code": "ET0511",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "Dawuro",
+    "zone_code": "ET1104",
+    "region_name": "South West Ethiopia",
+    "region_code": "ET11"
+  },
+  {
+    "zone_name": "Derashe",
+    "zone_code": "ET0807",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "Dire Dawa rural",
+    "zone_code": "ET1502",
+    "region_name": "Dire Dawa",
+    "region_code": "ET15"
+  },
+  {
+    "zone_name": "Dire Dawa urban",
+    "zone_code": "ET1501",
+    "region_name": "Dire Dawa",
+    "region_code": "ET15"
+  },
+  {
+    "zone_name": "Doolo",
+    "zone_code": "ET0507",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "East Bale",
+    "zone_code": "ET0421",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "East Gojam",
+    "zone_code": "ET0306",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "East Hararge",
+    "zone_code": "ET0410",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "East Shewa",
+    "zone_code": "ET0407",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "East Wellega",
+    "zone_code": "ET0402",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Eastern",
+    "zone_code": "ET0103",
+    "region_name": "Tigray",
+    "region_code": "ET01"
+  },
+  {
+    "zone_name": "Erer",
+    "zone_code": "ET0504",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "Fafan",
+    "zone_code": "ET0502",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "Fanti /Zone 4",
+    "zone_code": "ET0204",
+    "region_name": "Afar",
+    "region_code": "ET02"
+  },
+  {
+    "zone_name": "Shager",
+    "zone_code": "ET0420",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Gamo",
+    "zone_code": "ET0802",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "Gedeo",
+    "zone_code": "ET0811",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "Gofa",
+    "zone_code": "ET0803",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "Guji",
+    "zone_code": "ET0414",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Guraghe",
+    "zone_code": "ET0701",
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  },
+  {
+    "zone_name": "Hadiya",
+    "zone_code": "ET0702",
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  },
+  {
+    "zone_name": "Halaba",
+    "zone_code": "ET0714",
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  },
+  {
+    "zone_name": "Harari",
+    "zone_code": "ET1301",
+    "region_name": "Harari",
+    "region_code": "ET13"
+  },
+  {
+    "zone_name": "Hari /Zone 5",
+    "zone_code": "ET0205",
+    "region_name": "Afar",
+    "region_code": "ET02"
+  },
+  {
+    "zone_name": "Horo Gudru Wellega",
+    "zone_code": "ET0419",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Ilu Aba Bora",
+    "zone_code": "ET0403",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Itang Special woreda",
+    "zone_code": "ET1204",
+    "region_name": "Gambela",
+    "region_code": "ET12"
+  },
+  {
+    "zone_name": "Jarar",
+    "zone_code": "ET0503",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "Jimma",
+    "zone_code": "ET0404",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Kamashi",
+    "zone_code": "ET0604",
+    "region_name": "Benishangul-Gumuz",
+    "region_code": "ET06"
+  },
+  {
+    "zone_name": "Kefa",
+    "zone_code": "ET1102",
+    "region_name": "South West Ethiopia",
+    "region_code": "ET11"
+  },
+  {
+    "zone_name": "Kelem Wellega",
+    "zone_code": "ET0418",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Kembata",
+    "zone_code": "ET0703",
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  },
+  {
+    "zone_name": "Kilbati /Zone2",
+    "zone_code": "ET0202",
+    "region_name": "Afar",
+    "region_code": "ET02"
+  },
+  {
+    "zone_name": "Konso",
+    "zone_code": "ET0809",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "Konta",
+    "zone_code": "ET1106",
+    "region_name": "South West Ethiopia",
+    "region_code": "ET11"
+  },
+  {
+    "zone_name": "Korahe",
+    "zone_code": "ET0505",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "Liban",
+    "zone_code": "ET0509",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "Majang",
+    "zone_code": "ET1203",
+    "region_name": "Gambela",
+    "region_code": "ET12"
+  },
+  {
+    "zone_name": "Mao Komo Special",
+    "zone_code": "ET0605",
+    "region_name": "Benishangul-Gumuz",
+    "region_code": "ET06"
+  },
+  {
+    "zone_name": "Mekelle",
+    "zone_code": "ET0107",
+    "region_name": "Tigray",
+    "region_code": "ET01"
+  },
+  {
+    "zone_name": "Metekel",
+    "zone_code": "ET0602",
+    "region_name": "Benishangul-Gumuz",
+    "region_code": "ET06"
+  },
+  {
+    "zone_name": "Mirab Omo",
+    "zone_code": "ET1105",
+    "region_name": "South West Ethiopia",
+    "region_code": "ET11"
+  },
+  {
+    "zone_name": "Nogob",
+    "zone_code": "ET0510",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "North Gondar",
+    "zone_code": "ET0301",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "North Shewa (AM)",
+    "zone_code": "ET0305",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "North Shewa (OR)",
+    "zone_code": "ET0406",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "North Wello",
+    "zone_code": "ET0303",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "North Western",
+    "zone_code": "ET0101",
+    "region_name": "Tigray",
+    "region_code": "ET01"
+  },
+  {
+    "zone_name": "Nuwer",
+    "zone_code": "ET1201",
+    "region_name": "Gambela",
+    "region_code": "ET12"
+  },
+  {
+    "zone_name": "Oromia",
+    "zone_code": "ET0310",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "Addis Ababa",
+    "zone_code": "ET1401",
+    "region_name": "Addis Ababa",
+    "region_code": "ET14"
+  },
+  {
+    "zone_name": "Shabelle",
+    "zone_code": "ET0506",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "Sheka",
+    "zone_code": "ET1101",
+    "region_name": "South West Ethiopia",
+    "region_code": "ET11"
+  },
+  {
+    "zone_name": "Sidama",
+    "zone_code": "ET1600",
+    "region_name": "Sidama",
+    "region_code": "ET16"
+  },
+  {
+    "zone_name": "Siltie",
+    "zone_code": "ET0720",
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  },
+  {
+    "zone_name": "Siti",
+    "zone_code": "ET0501",
+    "region_name": "Somali",
+    "region_code": "ET05"
+  },
+  {
+    "zone_name": "South Eastern",
+    "zone_code": "ET0106",
+    "region_name": "Tigray",
+    "region_code": "ET01"
+  },
+  {
+    "zone_name": "South Gondar",
+    "zone_code": "ET0302",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "South Omo Pas",
+    "zone_code": "ET0812",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "South Wello",
+    "zone_code": "ET0304",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "South West Shewa",
+    "zone_code": "ET0413",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Southern",
+    "zone_code": "ET0104",
+    "region_name": "Tigray",
+    "region_code": "ET01"
+  },
+  {
+    "zone_name": "Wag Hamra",
+    "zone_code": "ET0308",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "West Arsi",
+    "zone_code": "ET0417",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "West Gondar",
+    "zone_code": "ET0312",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "West Guji",
+    "zone_code": "ET0415",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "West Hararge",
+    "zone_code": "ET0409",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "West Shewa",
+    "zone_code": "ET0405",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "West Wellega",
+    "zone_code": "ET0401",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "Western",
+    "zone_code": "ET0105",
+    "region_name": "Tigray",
+    "region_code": "ET01"
+  },
+  {
+    "zone_name": "Wolayita",
+    "zone_code": "ET0801",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  },
+  {
+    "zone_name": "Yem",
+    "zone_code": "ET0724",
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  },
+  {
+    "zone_name": "East Borena",
+    "zone_code": "ET0422",
+    "region_name": "Oromia",
+    "region_code": "ET04"
+  },
+  {
+    "zone_name": "West Gojam",
+    "zone_code": "ET0307",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "Mahi /Zone 6",
+    "zone_code": "ET0206",
+    "region_name": "Afar",
+    "region_code": "ET02"
+  },
+  {
+    "zone_name": "Gabi /Zone 3",
+    "zone_code": "ET0203",
+    "region_name": "Afar",
+    "region_code": "ET02"
+  },
+  {
+    "zone_name": "Bahir Dar",
+    "zone_code": "ET0314",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "North Gojam",
+    "zone_code": "ET0313",
+    "region_name": "Amhara",
+    "region_code": "ET03"
+  },
+  {
+    "zone_name": "East Guraghe",
+    "zone_code": "ET0704",
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  },
+  {
+    "zone_name": "Mareko Special",
+    "zone_code": "ET0706",
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  },
+  {
+    "zone_name": "Kebena Special",
+    "zone_code": "ET0705",
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  },
+  {
+    "zone_name": "Tembaro Special",
+    "zone_code": "ET0707",
+    "region_name": "Central Ethiopia",
+    "region_code": "ET07"
+  },
+  {
+    "zone_name": "South Omo Agr",
+    "zone_code": "ET0805",
+    "region_name": "South Ethiopian",
+    "region_code": "ET08"
+  }
+]

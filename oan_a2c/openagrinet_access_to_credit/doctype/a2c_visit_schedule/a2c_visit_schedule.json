@@ -50,27 +50,31 @@
   },
   {
    "fieldname": "region",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Region",
+   "options": "A2C Region",
    "reqd": 1,
    "in_list_view": 1
   },
   {
    "fieldname": "zone",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Zone",
+   "options": "A2C Zone",
    "reqd": 1
   },
   {
    "fieldname": "woreda",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Woreda",
+   "options": "A2C Woreda",
    "reqd": 1
   },
   {
    "fieldname": "kebele",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Kebele",
+   "options": "A2C Kebele",
    "reqd": 1
   },
   {

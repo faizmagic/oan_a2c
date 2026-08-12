@@ -21,6 +21,21 @@ class TestLoansV1API(unittest.TestCase):
 	@classmethod
 	def setUpClass(cls):
 		frappe.set_user("Administrator")
+		
+		# Setup region/woreda/kebele for tests
+		# Required because Woreda/Kebele fields were converted to 'Link' types to enforce relational data consistency.
+		# The test APIs expect these entities to exist in the database.
+		if not frappe.db.exists("A2C Region", "Sidama"):
+			frappe.get_doc({"doctype": "A2C Region", "region_name": "Sidama"}).insert(ignore_permissions=True)
+		if not frappe.db.exists("A2C Zone", {"zone_name": "SidamaZone"}):
+			frappe.get_doc({"doctype": "A2C Zone", "zone_name": "SidamaZone", "region": "Sidama"}).insert(ignore_permissions=True)
+		zone_id = frappe.db.get_value("A2C Zone", {"zone_name": "SidamaZone"}, "name")
+		if not frappe.db.exists("A2C Woreda", {"woreda_name": "Hawassa"}):
+			frappe.get_doc({"doctype": "A2C Woreda", "woreda_name": "Hawassa", "zone": zone_id}).insert(ignore_permissions=True)
+		woreda_id = frappe.db.get_value("A2C Woreda", {"woreda_name": "Hawassa"}, "name")
+		if not frappe.db.exists("A2C Kebele", {"kebele_name": "01", "woreda": woreda_id}):
+			frappe.get_doc({"doctype": "A2C Kebele", "kebele_name": "01", "woreda": woreda_id}).insert(ignore_permissions=True)
+
 		frappe.db.sql(
 			"DELETE FROM `tabA2C Loan Application` WHERE lead_id='TEST_LEAD_999' OR first_name='API_TEST_FARMER'"
 		)
@@ -129,10 +144,16 @@ class TestLoansV1API(unittest.TestCase):
 
 		# Reset response state to avoid test pollution
 		if getattr(frappe.local, "response", None):
-			frappe.local.response.type = None
-			frappe.local.response.filename = None
-			frappe.local.response.filecontent = None
-			frappe.local.response.display_content_as = None
+			if isinstance(frappe.local.response, dict):
+				frappe.local.response.pop("type", None)
+				frappe.local.response.pop("filename", None)
+				frappe.local.response.pop("filecontent", None)
+				frappe.local.response.pop("display_content_as", None)
+			else:
+				frappe.local.response.type = None
+				frappe.local.response.filename = None
+				frappe.local.response.filecontent = None
+				frappe.local.response.display_content_as = None
 
 		frappe.db.commit()
 
@@ -301,22 +322,22 @@ class TestLoansV1API(unittest.TestCase):
 			lead_id="TEST_LEAD_999",
 			email="updated_farmer@example.com",
 			region="Sidama",
-			woreda="Hawassa",
-			kebele="01",
+			woreda="Sidama-Hawassa",
+			kebele="Sidama-Hawassa-01",
 		)
 		self.assertEqual(res["status"], "success")
 		self.assertEqual(res["data"]["email"], "updated_farmer@example.com")
 		self.assertEqual(res["data"]["region"], "Sidama")
-		self.assertEqual(res["data"]["woreda"], "Hawassa")
-		self.assertEqual(res["data"]["kebele"], "01")
+		self.assertEqual(res["data"]["woreda"], "Sidama-Hawassa")
+		self.assertEqual(res["data"]["kebele"], "Sidama-Hawassa-01")
 
 		# Verify database documents got updated
 		lead_doc = frappe.get_doc("A2C Lead", "TEST_LEAD_999")
 		farmer_doc = frappe.get_doc("A2C Farmer Profile", lead_doc.farmer_profile)
 		self.assertEqual(farmer_doc.email, "updated_farmer@example.com")
 		self.assertEqual(farmer_doc.region, "Sidama")
-		self.assertEqual(farmer_doc.woreda, "Hawassa")
-		self.assertEqual(farmer_doc.kebele, "01")
+		self.assertEqual(farmer_doc.woreda, "Sidama-Hawassa")
+		self.assertEqual(farmer_doc.kebele, "Sidama-Hawassa-01")
 		self.assertEqual(lead_doc.email, "updated_farmer@example.com")
 
 	def test_4_get_full_profile(self):
@@ -350,26 +371,49 @@ class TestLoansV1API(unittest.TestCase):
 
 		# 1.5 Download supporting document
 		download_supporting_document(file_id=file_id)
-		self.assertEqual(frappe.local.response.filename, "test_doc.png")
+		
+		resp = frappe.local.response
+		# Depending on the test execution state, `frappe.local.response` might be a raw dict 
+		# or a full Frappe Response object (which supports attribute access). We handle both gracefully.
+		if isinstance(resp, dict):
+			self.assertEqual(resp.get("filename"), "test_doc.png")
+			file_content = resp.get("filecontent")
+		else:
+			self.assertEqual(resp.filename, "test_doc.png")
+			file_content = resp.filecontent
 
-		file_content = frappe.local.response.filecontent
 		if isinstance(file_content, bytes):
 			file_content = file_content.decode("utf-8")
 		self.assertEqual(file_content, "dummy content")
 
-		self.assertEqual(frappe.local.response.type, "download")
-		self.assertIsNone(frappe.local.response.get("display_content_as"))
+		if isinstance(resp, dict):
+			self.assertEqual(resp.get("type"), "download")
+			self.assertIsNone(resp.get("display_content_as"))
+		else:
+			self.assertEqual(resp.type, "download")
+			self.assertIsNone(getattr(resp, "display_content_as", None))
 
 		# Test downloading with view=1 (inline)
 		download_supporting_document(file_id=file_id, view=1)
-		self.assertEqual(frappe.local.response.display_content_as, "inline")
+		
+		resp = frappe.local.response
+		if isinstance(resp, dict):
+			self.assertEqual(resp.get("display_content_as"), "inline")
+		else:
+			self.assertEqual(resp.display_content_as, "inline")
 
 		# Reset response state to avoid test pollution
 		if getattr(frappe.local, "response", None):
-			frappe.local.response.type = None
-			frappe.local.response.filename = None
-			frappe.local.response.filecontent = None
-			frappe.local.response.display_content_as = None
+			if isinstance(frappe.local.response, dict):
+				frappe.local.response.pop("type", None)
+				frappe.local.response.pop("filename", None)
+				frappe.local.response.pop("filecontent", None)
+				frappe.local.response.pop("display_content_as", None)
+			else:
+				frappe.local.response.type = None
+				frappe.local.response.filename = None
+				frappe.local.response.filecontent = None
+				frappe.local.response.display_content_as = None
 
 		# 2. Delete supporting document
 		res_del = delete_supporting_document(application_id=self.app_id, file_id=file_id)

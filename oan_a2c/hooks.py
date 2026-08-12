@@ -88,6 +88,7 @@ app_license = "mit"
 
 # before_install = "oan_a2c.install.before_install"
 # after_install = "oan_a2c.install.after_install"
+after_migrate = "oan_a2c.scripts.setup_locations.execute"
 
 # Uninstallation
 # ------------
